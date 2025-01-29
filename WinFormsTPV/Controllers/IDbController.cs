@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WinFormsTPV.Models;
 
-namespace WinFormsTPV.Services
+namespace WinFormsTPV.Controllers
 {
     public interface IDbController
     {

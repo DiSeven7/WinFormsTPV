@@ -1,8 +1,9 @@
-﻿using System.Text;
+﻿using System.Drawing.Imaging;
+using System.Text;
 using Microsoft.Data.Sqlite;
 using WinFormsTPV.Models;
 
-namespace WinFormsTPV.Services
+namespace WinFormsTPV.Controllers
 {
     public class DbController : IDbController
     {
@@ -24,7 +25,7 @@ namespace WinFormsTPV.Services
 
                 String tableCommand = "CREATE TABLE IF NOT EXISTS Usuarios (Id INTEGER PRIMARY KEY AUTOINCREMENT, Alias VARCHAR(100), Contraseña VARCHAR(250), Verificado INT(1), Admin INT(1), Activo INT(1));" +
                     "CREATE TABLE IF NOT EXISTS Tickets(Id INTEGER PRIMARY KEY AUTOINCREMENT, Fecha DATETIME);" +
-                    "CREATE TABLE IF NOT EXISTS Productos(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT(500), Precio DECIMAL(4,2), Stock INT(7), Activo INT(1));" +
+                    "CREATE TABLE IF NOT EXISTS Productos(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT(500), Precio DECIMAL(4,2), Stock INT(7), Imagen BLOB, Categoria INT(2), Activo INT(1));" +
                     "CREATE TABLE IF NOT EXISTS Ventas(Id INTEGER PRIMARY KEY AUTOINCREMENT, IdTicket INT(10), IdProducto INT(10), Cantidad INT(5), Subtotal DECIMAL(4,2));";
 
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
@@ -35,11 +36,12 @@ namespace WinFormsTPV.Services
             if (ObtenerUsuarios().Count == 0)
             {
                 InsertarUsuario(new Usuario("admin", "admin", true, true, true));
-                InsertarUsuario(new Usuario("turno1", "admin", false, false, true));
+                InsertarUsuario(new Usuario("turno1", "admin", true, false, true));
                 InsertarVenta(new Venta(1, 2, 5, 22.22));
                 InsertarTicket(new Ticket(DateTime.Now));
-                InsertarProducto(new Producto("Coca-Cola", 1.25, 400, true));
+                InsertarProducto(new Producto("Coca-Cola", 1.25, 400, @"..\..\..\Resources\cocacola.png", Categoria.Refrescos, true));
             }
+            var co = ObtenerProductos();
         }
 
         #endregion
@@ -176,10 +178,17 @@ namespace WinFormsTPV.Services
                 var insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Productos (Nombre,Precio,Stock,Activo) VALUES (@nombre,@precio,@stock,@activo);";
+                insertCommand.CommandText = "INSERT INTO Productos (Nombre,Precio,Stock,Imagen,Categoria,Activo) VALUES (@nombre,@precio,@stock,@imagen,@categoria,@activo);";
                 insertCommand.Parameters.AddWithValue("@nombre", producto.Nombre);
                 insertCommand.Parameters.AddWithValue("@precio", producto.Precio);
                 insertCommand.Parameters.AddWithValue("@stock", producto.Stock);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Image img = Image.FromFile(producto.Imagen);
+                    img.Save(ms, ImageFormat.Png);
+                    insertCommand.Parameters.AddWithValue("@imagen", ms.ToArray());
+                }
+                insertCommand.Parameters.AddWithValue("@categoria", producto.Categoria);
                 insertCommand.Parameters.AddWithValue("@activo", producto.Activo);
                 insertCommand.ExecuteReader();
             }
@@ -200,7 +209,7 @@ namespace WinFormsTPV.Services
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    Producto producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                    Producto producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), (Categoria)Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
                     productos.Add(producto);
                 }
                 return productos;
@@ -223,7 +232,7 @@ namespace WinFormsTPV.Services
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                    producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), (Categoria)Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
                 }
                 return producto;
             }
@@ -239,11 +248,18 @@ namespace WinFormsTPV.Services
                 var insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "UPDATE Productos SET Nombre=@nombre,Precio=@precio,Stock=@stock,Activo=@activo WHERE Id=@id);";
+                insertCommand.CommandText = "UPDATE Productos SET Nombre=@nombre,Precio=@precio,Stock=@stock,Imagen=@imagen,Categoria=@categoria,Activo=@activo WHERE Id=@id);";
                 insertCommand.Parameters.AddWithValue("@nombre", producto.Nombre);
                 insertCommand.Parameters.AddWithValue("@precio", producto.Precio);
                 insertCommand.Parameters.AddWithValue("@stock", producto.Stock);
                 insertCommand.Parameters.AddWithValue("@activo", producto.Activo);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Image img = Image.FromFile(producto.Imagen);
+                    img.Save(ms, ImageFormat.Png);
+                    insertCommand.Parameters.AddWithValue("@imagen", ms.ToArray());
+                }
+                insertCommand.Parameters.AddWithValue("@categoria", producto.Categoria);
                 insertCommand.Parameters.AddWithValue("@id", producto.Id);
                 var resultado = insertCommand.ExecuteNonQuery();
                 return resultado > 0;
@@ -393,7 +409,7 @@ namespace WinFormsTPV.Services
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    venta = new Venta(Convert.ToInt32(resultados["IdTicket"]), Convert.ToInt32(resultados["IdProducto"]), Convert.ToInt32(resultados["Cantidad"]), Convert.ToDouble(resultados["Subtotal"]), Convert.ToInt32(resultados["Id"]));                    
+                    venta = new Venta(Convert.ToInt32(resultados["IdTicket"]), Convert.ToInt32(resultados["IdProducto"]), Convert.ToInt32(resultados["Cantidad"]), Convert.ToDouble(resultados["Subtotal"]), Convert.ToInt32(resultados["Id"]));
                 }
                 return venta;
             }

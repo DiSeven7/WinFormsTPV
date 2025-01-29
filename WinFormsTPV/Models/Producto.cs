@@ -16,6 +16,10 @@ namespace WinFormsTPV.Models
 
         public int Stock { get; set; }
 
+        public string Imagen { get; set; }
+
+        public Categoria Categoria { get; set; }
+
         public bool Activo { get; set; }
 
         public Producto()
@@ -23,12 +27,14 @@ namespace WinFormsTPV.Models
 
         }
 
-        public Producto(string nombre, double precio, int stock, bool activo, int id = -1)
+        public Producto(string nombre, double precio, int stock, string imagen, Categoria categoria, bool activo, int id = -1)
         {
             if (id != -1) { Id = id; };
             Nombre = nombre;
             Precio = precio;
             Stock = stock;
+            Imagen = imagen;
+            Categoria = categoria;
             Activo = activo;
         }
     }

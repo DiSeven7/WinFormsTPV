@@ -42,3 +42,5 @@ C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\bin\Debug\net8.0
 C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\bin\Debug\net8.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\bin\Debug\net8.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.Views.TerminalVentas.resources
+C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.UserControls.BotonesProductos.resources
+C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.Properties.Resources.resources

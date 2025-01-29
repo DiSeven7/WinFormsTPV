@@ -1,5 +1,4 @@
-using WinFormsTPV.Services;
-using WinFormsTPV.Views;
+using WinFormsTPV.Controllers;
 
 namespace WinFormsTPV
 {
@@ -15,16 +14,8 @@ namespace WinFormsTPV
             ApplicationConfiguration.Initialize();
             DbController db = new DbController();
             db.CrearDb();
-            Login login = new Login();
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                TerminalVentas tpv = new TerminalVentas(login.Usuario);
-                tpv.ShowDialog();
-            }
-            else
-            {
-                Application.Exit();
-            }
+            NavigationController navigation = new NavigationController();
+            navigation.LoginTerminal();
         }
     }
 }

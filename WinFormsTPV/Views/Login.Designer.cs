@@ -42,6 +42,7 @@
             // 
             btnAcceder.BackColor = Color.LightSeaGreen;
             btnAcceder.FlatAppearance.BorderColor = Color.White;
+            btnAcceder.FlatAppearance.BorderSize = 0;
             btnAcceder.FlatAppearance.MouseDownBackColor = Color.MediumTurquoise;
             btnAcceder.FlatAppearance.MouseOverBackColor = Color.MediumTurquoise;
             btnAcceder.FlatStyle = FlatStyle.Flat;
@@ -60,6 +61,7 @@
             btnSalir.BackColor = Color.Crimson;
             btnSalir.DialogResult = DialogResult.Cancel;
             btnSalir.FlatAppearance.BorderColor = Color.White;
+            btnSalir.FlatAppearance.BorderSize = 0;
             btnSalir.FlatAppearance.MouseDownBackColor = Color.LightCoral;
             btnSalir.FlatAppearance.MouseOverBackColor = Color.LightCoral;
             btnSalir.FlatStyle = FlatStyle.Flat;

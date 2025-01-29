@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using WinFormsTPV.Controllers;
 using WinFormsTPV.Models;
-using WinFormsTPV.Services;
 
 namespace WinFormsTPV.Views
 {
@@ -28,11 +19,20 @@ namespace WinFormsTPV.Views
             var usuario = dbController.IniciarSesion(tbUsuario.Text, tbContraseña.Text);
             if (usuario != null)
             {
-                Usuario = usuario;
-                DialogResult = DialogResult.OK;
+                if (!usuario.Activo)
+                {
+                    lblErrorLogin.Text = "Usuario deshabilitado";
+                    lblErrorLogin.Visible = true;
+                }
+                else
+                {
+                    Usuario = usuario;
+                    DialogResult = DialogResult.OK;
+                }
             }
             else
             {
+                lblErrorLogin.Text = "Usuario o contraseña incorrectos";
                 lblErrorLogin.Visible = true;
             }
         }

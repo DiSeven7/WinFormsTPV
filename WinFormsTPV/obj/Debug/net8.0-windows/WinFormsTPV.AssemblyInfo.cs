@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WinFormsTPV")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d77bf232c6f8b5d2694a65be485404791ef099b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa6889d7e7cea4ba39f92f5c0e633efad6e40def")]
 [assembly: System.Reflection.AssemblyProductAttribute("WinFormsTPV")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WinFormsTPV")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
