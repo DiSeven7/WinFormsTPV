@@ -9,7 +9,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Atras.png" />
+    <None Remove="Resources\Cafés.png" />
+    <None Remove="Resources\Cervezas.png" />
+    <None Remove="Resources\Comidas.png" />
+    <None Remove="Resources\Desayunos.png" />
+    <None Remove="Resources\Menús.png" />
+    <None Remove="Resources\Refrescos.png" />
+    <None Remove="Resources\TesAgua.png" />
+    <None Remove="Resources\Vinos.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Menús.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Atras.png" />
+    <Resource Include="Resources\Cafés.png" />
+    <Resource Include="Resources\Cervezas.png" />
+    <Resource Include="Resources\Comidas.png" />
+    <Resource Include="Resources\Desayunos.png" />
+    <Resource Include="Resources\Refrescos.png" />
+    <Resource Include="Resources\TesAgua.png" />
+    <Resource Include="Resources\Vinos.png" />
   </ItemGroup>
 
   <ItemGroup>

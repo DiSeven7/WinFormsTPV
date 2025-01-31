@@ -14,17 +14,20 @@ namespace WinFormsTPV.Models
 
         public int IdProducto { get; set; }
 
+        public int IdUsuario { get; set; }
+
         public int Cantidad { get; set; }
 
         public double Subtotal { get; set; }
 
         public Venta() { }
 
-        public Venta(int idTicket, int idProducto, int cantidad, double subtotal, int id = -1)
+        public Venta(int idTicket, int idProducto, int idUsuario, int cantidad, double subtotal, int id = -1)
         {
             if (id != -1) { Id = id; };
             IdTicket = idTicket;
             IdProducto = idProducto;
+            IdUsuario = idUsuario;
             Cantidad = cantidad;
             Subtotal = subtotal;
         }

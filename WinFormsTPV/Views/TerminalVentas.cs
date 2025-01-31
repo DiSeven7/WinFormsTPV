@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsTPV.Controllers;
 using WinFormsTPV.Models;
+using WinFormsTPV.UserControls;
 
 namespace WinFormsTPV.Views
 {
@@ -20,37 +21,38 @@ namespace WinFormsTPV.Views
 
         private NavigationController NavigationController = new NavigationController();
 
+        private List<BotonNavegacion> BotonesNavegacion = new List<BotonNavegacion>();
+
+        private BotonNavegacion BotonAtras;
+
         private Usuario Usuario;
 
         public TerminalVentas(Usuario usuario)
         {
             InitializeComponent();
             Usuario = usuario;
-            var producto = dbController.ObtenerProducto(1);
-            byte[] imgBytes = Convert.FromBase64String(producto.Imagen);
-            using (MemoryStream ms = new MemoryStream(imgBytes))
-            {
-                var img = Image.FromStream(ms);
-                productoPrueba.pbImagen.Image = img;               
-                img.Save("C:\\Users\\DiSeven\\Desktop\\caquita.png");
-            }
-            productoPrueba.btnNombre.Text = producto.Nombre;
-            if (producto.Stock < 1)
-            {
-                productoPrueba.btnPrecio.BackColor = Color.DarkOrange;
-                productoPrueba.btnPrecio.FlatAppearance.MouseOverBackColor = Color.DarkOrange;
-                productoPrueba.btnPrecio.FlatAppearance.MouseDownBackColor = Color.DarkOrange;
-                productoPrueba.btnPrecio.Enabled = false;
-                productoPrueba.btnPrecio.Text = "Agotado";
-            }
-            else
-            {
-                productoPrueba.btnPrecio.Text = producto.Precio.ToString() + "€";
-            }
             timerFechaHora = new System.Windows.Forms.Timer();
             timerFechaHora.Interval = 1000;
             timerFechaHora.Tick += TimerFechaHora_Tick;
             timerFechaHora.Start();
+            BotonAtras = new BotonNavegacion()
+            {
+                EsBotonAtras = true,
+                Margin = new Padding(1, 1, 1, 1)
+            };
+            BotonAtras.Click += BotonAtras_Click;
+            foreach (Categoria categoria in dbController.ObtenerCategorias().Where(x => x.Activa))
+            {
+                BotonNavegacion botonNavegacion = new BotonNavegacion()
+                {
+                    Categoria = categoria,
+                    EsBotonAtras = false,
+                    Margin = new Padding(1, 1, 1, 1)
+                };
+                botonNavegacion.Click += BotonNavegacion_Click;
+                BotonesNavegacion.Add(botonNavegacion);
+            }
+            MuestraMenuPrincipal();
             if (usuario.EsAdmin)
             {
                 btnAdministrar.Visible = true;
@@ -61,15 +63,63 @@ namespace WinFormsTPV.Views
             }
         }
 
+        private void BotonNavegacion_Click(object sender, EventArgs e)
+        {
+            tlpProductos.Controls.Clear();
+            var productos = dbController.ObtenerProductosCategoria(((BotonNavegacion)sender).Categoria);
+
+            int col = 0;
+            int row = 0;
+            tlpProductos.Controls.Add(BotonAtras, 0, 0);
+            col++;
+            foreach (var producto in productos)
+            {
+                tlpProductos.Controls.Add(
+                    new BotonProducto()
+                    {
+                        Producto = producto
+                    }, col, row);
+                col++;
+                if (col == 8)
+                {
+                    row++;
+                    col = 0;
+                }
+            }
+        }
+
+        private void BotonAtras_Click(object? sender, EventArgs e)
+        {
+            MuestraMenuPrincipal();
+        }
+
         private void TimerFechaHora_Tick(object? sender, EventArgs e)
         {
-            btnFecha.Text = $"{Usuario.Alias} {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
+            btnFecha.Text = $"{Usuario.Alias} - {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
             Dispose();
             NavigationController.LoginTerminal();
+        }
+
+        public void MuestraMenuPrincipal()
+        {
+            tlpProductos.Controls.Clear();
+            int col = 0;
+            int row = 0;
+            foreach (var boton in BotonesNavegacion)
+            {
+                tlpProductos.Controls.Add(boton, col, row);
+                col++;
+                if (col == 8)
+                {
+                    row++;
+                    col = 0;
+                }
+            }
+            tlpProductos.Invalidate();
         }
     }
 }

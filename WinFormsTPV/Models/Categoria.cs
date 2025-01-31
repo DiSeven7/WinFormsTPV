@@ -6,14 +6,24 @@ using System.Threading.Tasks;
 
 namespace WinFormsTPV.Models
 {
-    public enum Categoria
+    public class Categoria
     {
-        Vinos = 1,
-        Cervezas = 2,
-        Refrescos = 3,
-        AguaCafes = 4,
-        Desayunos = 5,
-        Comidas = 6,
-        Menús = 7
+        public int Id { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Imagen { get; set; }
+
+        public bool Activa { get; set; }
+
+        public Categoria() { }
+
+        public Categoria(string nombre, string imagen, bool activa, int id = -1)
+        {
+            if (id != -1) { Id = id; };
+            Nombre = nombre;
+            Imagen = imagen;
+            Activa = activa;
+        }
     }
 }

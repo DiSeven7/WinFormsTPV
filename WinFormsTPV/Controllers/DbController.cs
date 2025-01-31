@@ -1,4 +1,5 @@
-﻿using System.Drawing.Imaging;
+﻿using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.Text;
 using Microsoft.Data.Sqlite;
 using WinFormsTPV.Models;
@@ -19,14 +20,15 @@ namespace WinFormsTPV.Controllers
             }
 
             using (SqliteConnection db =
-               new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
                 String tableCommand = "CREATE TABLE IF NOT EXISTS Usuarios (Id INTEGER PRIMARY KEY AUTOINCREMENT, Alias VARCHAR(100), Contraseña VARCHAR(250), Verificado INT(1), Admin INT(1), Activo INT(1));" +
                     "CREATE TABLE IF NOT EXISTS Tickets(Id INTEGER PRIMARY KEY AUTOINCREMENT, Fecha DATETIME);" +
-                    "CREATE TABLE IF NOT EXISTS Productos(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT(500), Precio DECIMAL(4,2), Stock INT(7), Imagen BLOB, Categoria INT(2), Activo INT(1));" +
-                    "CREATE TABLE IF NOT EXISTS Ventas(Id INTEGER PRIMARY KEY AUTOINCREMENT, IdTicket INT(10), IdProducto INT(10), Cantidad INT(5), Subtotal DECIMAL(4,2));";
+                    "CREATE TABLE IF NOT EXISTS Productos(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT(500), Precio DECIMAL(4,2), Stock INT(7), Imagen BLOB, Categoria INT(5), Activo INT(1));" +
+                    "CREATE TABLE IF NOT EXISTS Ventas(Id INTEGER PRIMARY KEY AUTOINCREMENT, IdTicket INT(10), IdProducto INT(10), IdUsuario INT(10), Cantidad INT(5), Subtotal DECIMAL(4,2));" +
+                    "CREATE TABLE IF NOT EXISTS Categorias(Id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR(100), Imagen BLOB, Activa INT(1));";
 
                 SqliteCommand createTable = new SqliteCommand(tableCommand, db);
 
@@ -37,9 +39,17 @@ namespace WinFormsTPV.Controllers
             {
                 InsertarUsuario(new Usuario("admin", "admin", true, true, true));
                 InsertarUsuario(new Usuario("turno1", "admin", true, false, true));
-                InsertarVenta(new Venta(1, 2, 5, 22.22));
+                InsertarCategoria(new Categoria("Cervezas", @"..\..\..\Resources\Cervezas.png", true));
+                InsertarCategoria(new Categoria("Vinos", @"..\..\..\Resources\Vinos.png", true));
+                InsertarCategoria(new Categoria("Refrescos", @"..\..\..\Resources\Refrescos.png", true));
+                InsertarCategoria(new Categoria("Cafés", @"..\..\..\Resources\Cafés.png", true));
+                InsertarCategoria(new Categoria("Tés y agua", @"..\..\..\Resources\TesAgua.png", true));
+                InsertarCategoria(new Categoria("Desayunos", @"..\..\..\Resources\Desayunos.png", true));
+                InsertarCategoria(new Categoria("Comidas", @"..\..\..\Resources\Comidas.png", true));
+                InsertarCategoria(new Categoria("Menús", @"..\..\..\Resources\Menús.png", true));
+                InsertarVenta(new Venta(1, 2, 1, 5, 22.22));
                 InsertarTicket(new Ticket(DateTime.Now));
-                InsertarProducto(new Producto("Coca-Cola", 1.25, 400, @"..\..\..\Resources\cocacola.png", Categoria.Refrescos, true));
+                InsertarProducto(new Producto("Coca-Cola", 1.25, 400, @"..\..\..\Resources\cocacola.png", 3, true));
             }
             var co = ObtenerProductos();
         }
@@ -51,7 +61,7 @@ namespace WinFormsTPV.Controllers
         public void InsertarUsuario(Usuario usuario)
         {
             using (SqliteConnection db =
-              new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -72,7 +82,7 @@ namespace WinFormsTPV.Controllers
         public List<Usuario> ObtenerUsuarios()
         {
             using (SqliteConnection db =
-             new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -94,7 +104,7 @@ namespace WinFormsTPV.Controllers
         public Usuario ObtenerUsuario(int id)
         {
             using (SqliteConnection db =
-             new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -119,7 +129,7 @@ namespace WinFormsTPV.Controllers
         public bool ActualizarUsuario(Usuario usuario)
         {
             using (SqliteConnection db =
-             new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -141,7 +151,7 @@ namespace WinFormsTPV.Controllers
         public Usuario IniciarSesion(string nombreUsuario, string contraseña)
         {
             using (SqliteConnection db =
-           new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -171,7 +181,7 @@ namespace WinFormsTPV.Controllers
         public void InsertarProducto(Producto producto)
         {
             using (SqliteConnection db =
-              new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -197,7 +207,7 @@ namespace WinFormsTPV.Controllers
         public List<Producto> ObtenerProductos()
         {
             using (SqliteConnection db =
-         new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -209,7 +219,7 @@ namespace WinFormsTPV.Controllers
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    Producto producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), (Categoria)Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                    Producto producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
                     productos.Add(producto);
                 }
                 return productos;
@@ -219,7 +229,7 @@ namespace WinFormsTPV.Controllers
         public Producto ObtenerProducto(int id)
         {
             using (SqliteConnection db =
-    new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -232,16 +242,39 @@ namespace WinFormsTPV.Controllers
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), (Categoria)Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                    producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
                 }
                 return producto;
+            }
+        }
+
+        public List<Producto> ObtenerProductosCategoria(Categoria categoria)
+        {
+            using (SqliteConnection db =
+            new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "SELECT * FROM Productos WHERE Categoria=@categoria;";
+                insertCommand.Parameters.AddWithValue("@categoria", categoria.Id);
+                List<Producto> productos = new List<Producto>();
+                var resultados = insertCommand.ExecuteReader();
+                while (resultados.Read())
+                {
+                    Producto producto = new Producto((string)resultados["Nombre"], Convert.ToDouble(resultados["Precio"]), Convert.ToInt32(resultados["Stock"]), Convert.ToBase64String((byte[])resultados["Imagen"]), Convert.ToInt32(resultados["Categoria"]), Convert.ToInt32(resultados["Activo"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                    productos.Add(producto);
+                }
+                return productos;
             }
         }
 
         public bool ActualizarProducto(Producto producto)
         {
             using (SqliteConnection db =
-             new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -273,7 +306,7 @@ namespace WinFormsTPV.Controllers
         public void InsertarTicket(Ticket ticket)
         {
             using (SqliteConnection db =
-              new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -289,7 +322,7 @@ namespace WinFormsTPV.Controllers
         public List<Ticket> ObtenerTickets()
         {
             using (SqliteConnection db =
-     new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -311,7 +344,7 @@ namespace WinFormsTPV.Controllers
         public Ticket ObtenerTicket(int id)
         {
             using (SqliteConnection db =
-     new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -330,10 +363,32 @@ namespace WinFormsTPV.Controllers
             }
         }
 
+        public Ticket ObtenerTicket(DateTime fecha)
+        {
+            using (SqliteConnection db =
+            new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "SELECT * FROM Tickets WHERE Fecha=@fecha;";
+                insertCommand.Parameters.AddWithValue("@fecha", fecha);
+                Ticket ticket = null;
+                var resultados = insertCommand.ExecuteReader();
+                while (resultados.Read())
+                {
+                    ticket = new Ticket(Convert.ToDateTime(resultados["Fecha"]), Convert.ToInt32(resultados["Id"]));
+                }
+                return ticket;
+            }
+        }
+
         public bool ActualizarTicket(Ticket ticket)
         {
             using (SqliteConnection db =
-              new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -355,7 +410,7 @@ namespace WinFormsTPV.Controllers
         public void InsertarVenta(Venta venta)
         {
             using (SqliteConnection db =
-              new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -386,7 +441,7 @@ namespace WinFormsTPV.Controllers
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    Venta venta = new Venta(Convert.ToInt32(resultados["IdTicket"]), Convert.ToInt32(resultados["IdProducto"]), Convert.ToInt32(resultados["Cantidad"]), Convert.ToDouble(resultados["Subtotal"]), Convert.ToInt32(resultados["Id"]));
+                    Venta venta = new Venta(Convert.ToInt32(resultados["IdTicket"]), Convert.ToInt32(resultados["IdProducto"]), Convert.ToInt32(resultados["IdUsuario"]), Convert.ToInt32(resultados["Cantidad"]), Convert.ToDouble(resultados["Subtotal"]), Convert.ToInt32(resultados["Id"]));
                     ventas.Add(venta);
                 }
                 return ventas;
@@ -409,7 +464,7 @@ namespace WinFormsTPV.Controllers
                 var resultados = insertCommand.ExecuteReader();
                 while (resultados.Read())
                 {
-                    venta = new Venta(Convert.ToInt32(resultados["IdTicket"]), Convert.ToInt32(resultados["IdProducto"]), Convert.ToInt32(resultados["Cantidad"]), Convert.ToDouble(resultados["Subtotal"]), Convert.ToInt32(resultados["Id"]));
+                    venta = new Venta(Convert.ToInt32(resultados["IdTicket"]), Convert.ToInt32(resultados["IdProducto"]), Convert.ToInt32(resultados["IdUsuario"]), Convert.ToInt32(resultados["Cantidad"]), Convert.ToDouble(resultados["Subtotal"]), Convert.ToInt32(resultados["Id"]));
                 }
                 return venta;
             }
@@ -418,7 +473,7 @@ namespace WinFormsTPV.Controllers
         public bool ActualizarVenta(Venta venta)
         {
             using (SqliteConnection db =
-              new SqliteConnection($"Filename={path}"))
+            new SqliteConnection($"Filename={path}"))
             {
                 db.Open();
 
@@ -431,6 +486,103 @@ namespace WinFormsTPV.Controllers
                 insertCommand.Parameters.AddWithValue("@cantidad", venta.Cantidad);
                 insertCommand.Parameters.AddWithValue("@subtotal", venta.Subtotal);
                 insertCommand.Parameters.AddWithValue("@id", venta.Id);
+                var resultado = insertCommand.ExecuteNonQuery();
+                return resultado > 0;
+            }
+        }
+
+        #endregion
+
+        #region Operaciones Categorías
+
+        public void InsertarCategoria(Categoria categoria)
+        {
+            using (SqliteConnection db =
+            new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT INTO Categorias (Nombre,Imagen,Activa) VALUES (@nombre,@imagen,@activa);";
+                insertCommand.Parameters.AddWithValue("@nombre", categoria.Nombre);
+                using (MemoryStream ms = new MemoryStream())
+                {
+
+                    Image img = Image.FromFile(categoria.Imagen);
+                    img.Save(ms, ImageFormat.Png);
+                    insertCommand.Parameters.AddWithValue("@imagen", ms.ToArray());
+                }
+                insertCommand.Parameters.AddWithValue("@activa", categoria.Activa);
+                insertCommand.ExecuteReader();
+            }
+        }
+
+        public List<Categoria> ObtenerCategorias()
+        {
+            using (SqliteConnection db =
+            new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "SELECT * FROM Categorias";
+                List<Categoria> categorias = new List<Categoria>();
+                var resultados = insertCommand.ExecuteReader();
+                while (resultados.Read())
+                {
+                    Categoria categoria = new Categoria((string)resultados["Nombre"], Convert.ToBase64String((byte[])resultados["Imagen"]), Convert.ToInt32(resultados["Activa"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                    categorias.Add(categoria);
+                }
+                return categorias;
+            }
+        }
+
+        public Categoria ObtenerCategoria(int id)
+        {
+            using (SqliteConnection db =
+            new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "SELECT * FROM Categorias WHERE id=@id";
+                insertCommand.Parameters.AddWithValue("@id", id);
+                Categoria categoria = null;
+                var resultados = insertCommand.ExecuteReader();
+                while (resultados.Read())
+                {
+                    categoria = new Categoria((string)resultados["Nombre"], Convert.ToBase64String((byte[])resultados["Imagen"]), Convert.ToInt32(resultados["Activa"]) == 1 ? true : false, Convert.ToInt32(resultados["Id"]));
+                }
+                return categoria;
+            }
+        }
+
+        public bool ActualizarCategoria(Categoria categoria)
+        {
+            using (SqliteConnection db =
+            new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "UPDATE Categorias SET Nombre=@nombre,Imagen=@imagen,Activa=@activa WHERE Id=@id;";
+                insertCommand.Parameters.AddWithValue("@id", categoria.Id);
+                insertCommand.Parameters.AddWithValue("@nombre", categoria.Nombre);
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    Image img = Image.FromFile(categoria.Imagen);
+                    img.Save(ms, ImageFormat.Png);
+                    insertCommand.Parameters.AddWithValue("@imagen", ms.ToArray());
+                }
+                insertCommand.Parameters.AddWithValue("@activa", categoria.Activa);
                 var resultado = insertCommand.ExecuteNonQuery();
                 return resultado > 0;
             }

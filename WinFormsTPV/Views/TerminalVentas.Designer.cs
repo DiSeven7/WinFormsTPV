@@ -32,7 +32,6 @@
             layoutPrincipal = new TableLayoutPanel();
             btnCabecera = new Button();
             tlpProductos = new TableLayoutPanel();
-            productoPrueba = new UserControls.BotonesProductos();
             tlpAdmin = new TableLayoutPanel();
             btnFinalizarTicket = new Button();
             btnTotal = new Button();
@@ -42,7 +41,6 @@
             btnFinalizar = new Button();
             panelTicket = new Panel();
             layoutPrincipal.SuspendLayout();
-            tlpProductos.SuspendLayout();
             tlpAdmin.SuspendLayout();
             tlpUsuario.SuspendLayout();
             SuspendLayout();
@@ -50,8 +48,8 @@
             // layoutPrincipal
             // 
             layoutPrincipal.ColumnCount = 2;
-            layoutPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            layoutPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            layoutPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            layoutPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
             layoutPrincipal.Controls.Add(btnCabecera, 0, 0);
             layoutPrincipal.Controls.Add(tlpProductos, 0, 1);
             layoutPrincipal.Controls.Add(tlpAdmin, 1, 2);
@@ -64,7 +62,6 @@
             layoutPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 3F));
             layoutPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
             layoutPrincipal.RowStyles.Add(new RowStyle(SizeType.Percent, 7F));
-            layoutPrincipal.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             layoutPrincipal.Size = new Size(1080, 720);
             layoutPrincipal.TabIndex = 0;
             // 
@@ -90,38 +87,28 @@
             // 
             // tlpProductos
             // 
-            tlpProductos.ColumnCount = 6;
-            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6750011F));
-            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6649971F));
-            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6649971F));
-            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6649971F));
-            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6649971F));
-            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6649971F));
-            tlpProductos.Controls.Add(productoPrueba, 0, 0);
+            tlpProductos.ColumnCount = 8;
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
+            tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tlpProductos.Dock = DockStyle.Fill;
             tlpProductos.Location = new Point(0, 21);
             tlpProductos.Margin = new Padding(0);
             tlpProductos.Name = "tlpProductos";
             tlpProductos.RowCount = 6;
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6750031F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.664999F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.664999F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.664999F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.664999F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.664999F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tlpProductos.Size = new Size(540, 648);
+            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6750011F));
+            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
+            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
+            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
+            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
+            tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
+            tlpProductos.Size = new Size(648, 648);
             tlpProductos.TabIndex = 11;
-            // 
-            // productoPrueba
-            // 
-            productoPrueba.Dock = DockStyle.Fill;
-            productoPrueba.Location = new Point(1, 1);
-            productoPrueba.Margin = new Padding(1);
-            productoPrueba.Name = "productoPrueba";
-            productoPrueba.Size = new Size(88, 106);
-            productoPrueba.TabIndex = 1;
             // 
             // tlpAdmin
             // 
@@ -131,12 +118,12 @@
             tlpAdmin.Controls.Add(btnFinalizarTicket, 1, 0);
             tlpAdmin.Controls.Add(btnTotal, 0, 0);
             tlpAdmin.Dock = DockStyle.Fill;
-            tlpAdmin.Location = new Point(540, 669);
+            tlpAdmin.Location = new Point(648, 669);
             tlpAdmin.Margin = new Padding(0);
             tlpAdmin.Name = "tlpAdmin";
             tlpAdmin.RowCount = 1;
             tlpAdmin.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpAdmin.Size = new Size(540, 51);
+            tlpAdmin.Size = new Size(432, 51);
             tlpAdmin.TabIndex = 13;
             // 
             // btnFinalizarTicket
@@ -151,10 +138,10 @@
             btnFinalizarTicket.FlatStyle = FlatStyle.Flat;
             btnFinalizarTicket.Font = new Font("Verdana", 12F);
             btnFinalizarTicket.ForeColor = Color.White;
-            btnFinalizarTicket.Location = new Point(351, 0);
+            btnFinalizarTicket.Location = new Point(280, 0);
             btnFinalizarTicket.Margin = new Padding(0);
             btnFinalizarTicket.Name = "btnFinalizarTicket";
-            btnFinalizarTicket.Size = new Size(189, 51);
+            btnFinalizarTicket.Size = new Size(152, 51);
             btnFinalizarTicket.TabIndex = 17;
             btnFinalizarTicket.Text = "Finalizar";
             btnFinalizarTicket.UseVisualStyleBackColor = false;
@@ -174,7 +161,7 @@
             btnTotal.Location = new Point(0, 0);
             btnTotal.Margin = new Padding(0);
             btnTotal.Name = "btnTotal";
-            btnTotal.Size = new Size(351, 51);
+            btnTotal.Size = new Size(280, 51);
             btnTotal.TabIndex = 16;
             btnTotal.Text = "Total: 0.00€";
             btnTotal.UseVisualStyleBackColor = false;
@@ -194,7 +181,7 @@
             tlpUsuario.Name = "tlpUsuario";
             tlpUsuario.RowCount = 1;
             tlpUsuario.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tlpUsuario.Size = new Size(540, 51);
+            tlpUsuario.Size = new Size(648, 51);
             tlpUsuario.TabIndex = 12;
             // 
             // btnFecha
@@ -212,7 +199,7 @@
             btnFecha.Location = new Point(0, 0);
             btnFecha.Margin = new Padding(0);
             btnFecha.Name = "btnFecha";
-            btnFecha.Size = new Size(378, 51);
+            btnFecha.Size = new Size(453, 51);
             btnFecha.TabIndex = 15;
             btnFecha.Text = "Admin 01/01/2025 12:00:00";
             btnFecha.UseVisualStyleBackColor = false;
@@ -230,10 +217,10 @@
             btnAdministrar.Font = new Font("Verdana", 12F);
             btnAdministrar.ForeColor = Color.White;
             btnAdministrar.Image = (Image)resources.GetObject("btnAdministrar.Image");
-            btnAdministrar.Location = new Point(459, 0);
+            btnAdministrar.Location = new Point(550, 0);
             btnAdministrar.Margin = new Padding(0);
             btnAdministrar.Name = "btnAdministrar";
-            btnAdministrar.Size = new Size(81, 51);
+            btnAdministrar.Size = new Size(98, 51);
             btnAdministrar.TabIndex = 14;
             btnAdministrar.UseVisualStyleBackColor = false;
             btnAdministrar.Visible = false;
@@ -251,10 +238,10 @@
             btnFinalizar.Font = new Font("Verdana", 12F);
             btnFinalizar.ForeColor = Color.White;
             btnFinalizar.Image = (Image)resources.GetObject("btnFinalizar.Image");
-            btnFinalizar.Location = new Point(378, 0);
+            btnFinalizar.Location = new Point(453, 0);
             btnFinalizar.Margin = new Padding(0);
             btnFinalizar.Name = "btnFinalizar";
-            btnFinalizar.Size = new Size(81, 51);
+            btnFinalizar.Size = new Size(97, 51);
             btnFinalizar.TabIndex = 10;
             btnFinalizar.UseVisualStyleBackColor = true;
             btnFinalizar.Click += btnFinalizar_Click;
@@ -262,10 +249,10 @@
             // panelTicket
             // 
             panelTicket.Dock = DockStyle.Fill;
-            panelTicket.Location = new Point(540, 21);
+            panelTicket.Location = new Point(648, 21);
             panelTicket.Margin = new Padding(0);
             panelTicket.Name = "panelTicket";
-            panelTicket.Size = new Size(540, 648);
+            panelTicket.Size = new Size(432, 648);
             panelTicket.TabIndex = 14;
             // 
             // TerminalVentas
@@ -284,7 +271,6 @@
             Text = "TerminalVentas";
             WindowState = FormWindowState.Maximized;
             layoutPrincipal.ResumeLayout(false);
-            tlpProductos.ResumeLayout(false);
             tlpAdmin.ResumeLayout(false);
             tlpUsuario.ResumeLayout(false);
             ResumeLayout(false);
@@ -303,6 +289,5 @@
         private Button btnFinalizarTicket;
         private Button btnTotal;
         private Panel panelTicket;
-        private UserControls.BotonesProductos productoPrueba;
     }
 }

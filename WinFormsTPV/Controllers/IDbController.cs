@@ -27,6 +27,8 @@ namespace WinFormsTPV.Controllers
 
         Producto ObtenerProducto(int id);
 
+        List<Producto> ObtenerProductosCategoria(Categoria categoria);
+
         bool ActualizarProducto(Producto producto);
 
         void InsertarTicket(Ticket ticket);
@@ -34,6 +36,8 @@ namespace WinFormsTPV.Controllers
         List<Ticket> ObtenerTickets();
 
         Ticket ObtenerTicket(int id);
+
+        Ticket ObtenerTicket(DateTime fecha);
 
         bool ActualizarTicket(Ticket ticket);
 
@@ -44,5 +48,13 @@ namespace WinFormsTPV.Controllers
         Venta ObtenerVenta(int id);
 
         bool ActualizarVenta(Venta venta);
+
+        void InsertarCategoria(Categoria categoria);
+
+        List<Categoria> ObtenerCategorias();
+
+        Categoria ObtenerCategoria(int id);
+
+        bool ActualizarCategoria(Categoria categoria);
     }
 }

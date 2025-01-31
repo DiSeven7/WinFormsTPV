@@ -1,6 +1,6 @@
 ﻿namespace WinFormsTPV.UserControls
 {
-    partial class BotonesProductos
+    partial class BotonProducto
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -30,10 +30,10 @@
         {
             pbImagen = new PictureBox();
             btnNombre = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tlpContenido = new TableLayoutPanel();
             btnPrecio = new Button();
             ((System.ComponentModel.ISupportInitialize)pbImagen).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
+            tlpContenido.SuspendLayout();
             SuspendLayout();
             // 
             // pbImagen
@@ -46,14 +46,17 @@
             pbImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             pbImagen.TabIndex = 0;
             pbImagen.TabStop = false;
+            pbImagen.Click += Producto_Click;
+            pbImagen.MouseEnter += Producto_MouseEnter;
+            pbImagen.MouseLeave += Producto_MouseLeave;
             // 
             // btnNombre
             // 
-            btnNombre.BackColor = Color.DimGray;
+            btnNombre.BackColor = Color.LightSeaGreen;
             btnNombre.Dock = DockStyle.Fill;
             btnNombre.FlatAppearance.BorderSize = 0;
-            btnNombre.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            btnNombre.FlatAppearance.MouseOverBackColor = Color.DimGray;
+            btnNombre.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btnNombre.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btnNombre.FlatStyle = FlatStyle.Flat;
             btnNombre.Font = new Font("Verdana", 8F);
             btnNombre.ForeColor = Color.White;
@@ -64,32 +67,33 @@
             btnNombre.TabIndex = 2;
             btnNombre.Text = "Coca-Cola";
             btnNombre.UseVisualStyleBackColor = false;
+            btnNombre.Click += Producto_Click;
             // 
-            // tableLayoutPanel1
+            // tlpContenido
             // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(pbImagen, 0, 0);
-            tableLayoutPanel1.Controls.Add(btnNombre, 0, 1);
-            tableLayoutPanel1.Controls.Add(btnPrecio, 0, 2);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.Size = new Size(200, 200);
-            tableLayoutPanel1.TabIndex = 3;
+            tlpContenido.ColumnCount = 1;
+            tlpContenido.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpContenido.Controls.Add(pbImagen, 0, 0);
+            tlpContenido.Controls.Add(btnNombre, 0, 1);
+            tlpContenido.Controls.Add(btnPrecio, 0, 2);
+            tlpContenido.Dock = DockStyle.Fill;
+            tlpContenido.Location = new Point(0, 0);
+            tlpContenido.Margin = new Padding(1);
+            tlpContenido.Name = "tlpContenido";
+            tlpContenido.RowCount = 3;
+            tlpContenido.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
+            tlpContenido.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tlpContenido.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tlpContenido.Size = new Size(200, 200);
+            tlpContenido.TabIndex = 3;
             // 
             // btnPrecio
             // 
-            btnPrecio.BackColor = Color.LightSeaGreen;
+            btnPrecio.BackColor = Color.DimGray;
             btnPrecio.Dock = DockStyle.Fill;
             btnPrecio.FlatAppearance.BorderSize = 0;
-            btnPrecio.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
-            btnPrecio.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
+            btnPrecio.FlatAppearance.MouseDownBackColor = Color.DimGray;
+            btnPrecio.FlatAppearance.MouseOverBackColor = Color.DimGray;
             btnPrecio.FlatStyle = FlatStyle.Flat;
             btnPrecio.Font = new Font("Verdana", 8F);
             btnPrecio.ForeColor = Color.White;
@@ -98,23 +102,25 @@
             btnPrecio.Name = "btnPrecio";
             btnPrecio.Size = new Size(200, 30);
             btnPrecio.TabIndex = 2;
-            btnPrecio.Text = "+";
+            btnPrecio.Text = "0,00";
             btnPrecio.UseVisualStyleBackColor = false;
+            btnPrecio.Click += Producto_Click;
             // 
-            // BotonesProductos
+            // BotonProducto
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(tableLayoutPanel1);
-            Name = "BotonesProductos";
+            Controls.Add(tlpContenido);
+            Margin = new Padding(0);
+            Name = "BotonProducto";
             Size = new Size(200, 200);
             ((System.ComponentModel.ISupportInitialize)pbImagen).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
+            tlpContenido.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tlpContenido;
         private Button btnAñadir;
         public PictureBox pbImagen;
         public Button btnPrecio;
