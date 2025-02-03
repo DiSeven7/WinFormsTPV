@@ -47,6 +47,7 @@
             // 
             // layoutPrincipal
             // 
+            layoutPrincipal.BackColor = Color.Silver;
             layoutPrincipal.ColumnCount = 2;
             layoutPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             layoutPrincipal.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
@@ -67,16 +68,16 @@
             // 
             // btnCabecera
             // 
-            btnCabecera.BackColor = Color.LightSeaGreen;
+            btnCabecera.BackColor = Color.Teal;
             layoutPrincipal.SetColumnSpan(btnCabecera, 2);
             btnCabecera.Dock = DockStyle.Fill;
             btnCabecera.FlatAppearance.BorderColor = Color.White;
             btnCabecera.FlatAppearance.BorderSize = 0;
-            btnCabecera.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
-            btnCabecera.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
+            btnCabecera.FlatAppearance.MouseDownBackColor = Color.Teal;
+            btnCabecera.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnCabecera.FlatStyle = FlatStyle.Flat;
             btnCabecera.Font = new Font("Verdana", 7.5F);
-            btnCabecera.ForeColor = Color.White;
+            btnCabecera.ForeColor = Color.Silver;
             btnCabecera.Location = new Point(0, 0);
             btnCabecera.Margin = new Padding(0);
             btnCabecera.Name = "btnCabecera";
@@ -87,6 +88,7 @@
             // 
             // tlpProductos
             // 
+            tlpProductos.BackColor = Color.Silver;
             tlpProductos.ColumnCount = 8;
             tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
@@ -97,8 +99,8 @@
             tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tlpProductos.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 12.5F));
             tlpProductos.Dock = DockStyle.Fill;
-            tlpProductos.Location = new Point(0, 21);
-            tlpProductos.Margin = new Padding(0);
+            tlpProductos.Location = new Point(0, 23);
+            tlpProductos.Margin = new Padding(0, 2, 0, 2);
             tlpProductos.Name = "tlpProductos";
             tlpProductos.RowCount = 6;
             tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6750011F));
@@ -107,7 +109,7 @@
             tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
             tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
             tlpProductos.RowStyles.Add(new RowStyle(SizeType.Percent, 16.6649971F));
-            tlpProductos.Size = new Size(648, 648);
+            tlpProductos.Size = new Size(648, 644);
             tlpProductos.TabIndex = 11;
             // 
             // tlpAdmin
@@ -129,15 +131,15 @@
             // btnFinalizarTicket
             // 
             btnFinalizarTicket.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnFinalizarTicket.BackColor = Color.Crimson;
+            btnFinalizarTicket.BackColor = Color.Maroon;
             btnFinalizarTicket.Dock = DockStyle.Fill;
             btnFinalizarTicket.FlatAppearance.BorderColor = Color.White;
             btnFinalizarTicket.FlatAppearance.BorderSize = 0;
-            btnFinalizarTicket.FlatAppearance.MouseDownBackColor = Color.LightCoral;
-            btnFinalizarTicket.FlatAppearance.MouseOverBackColor = Color.LightCoral;
+            btnFinalizarTicket.FlatAppearance.MouseDownBackColor = Color.Crimson;
+            btnFinalizarTicket.FlatAppearance.MouseOverBackColor = Color.Crimson;
             btnFinalizarTicket.FlatStyle = FlatStyle.Flat;
             btnFinalizarTicket.Font = new Font("Verdana", 12F);
-            btnFinalizarTicket.ForeColor = Color.White;
+            btnFinalizarTicket.ForeColor = Color.Silver;
             btnFinalizarTicket.Location = new Point(280, 0);
             btnFinalizarTicket.Margin = new Padding(0);
             btnFinalizarTicket.Name = "btnFinalizarTicket";
@@ -149,15 +151,15 @@
             // btnTotal
             // 
             btnTotal.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnTotal.BackColor = SystemColors.WindowFrame;
+            btnTotal.BackColor = Color.FromArgb(70, 70, 70);
             btnTotal.Dock = DockStyle.Fill;
             btnTotal.FlatAppearance.BorderColor = Color.White;
             btnTotal.FlatAppearance.BorderSize = 0;
-            btnTotal.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            btnTotal.FlatAppearance.MouseOverBackColor = SystemColors.WindowFrame;
+            btnTotal.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
+            btnTotal.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 70, 70);
             btnTotal.FlatStyle = FlatStyle.Flat;
             btnTotal.Font = new Font("Verdana", 12F);
-            btnTotal.ForeColor = Color.White;
+            btnTotal.ForeColor = Color.Silver;
             btnTotal.Location = new Point(0, 0);
             btnTotal.Margin = new Padding(0);
             btnTotal.Name = "btnTotal";
@@ -187,15 +189,15 @@
             // btnFecha
             // 
             btnFecha.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnFecha.BackColor = SystemColors.WindowFrame;
+            btnFecha.BackColor = Color.FromArgb(70, 70, 70);
             btnFecha.Dock = DockStyle.Fill;
             btnFecha.FlatAppearance.BorderColor = Color.White;
             btnFecha.FlatAppearance.BorderSize = 0;
-            btnFecha.FlatAppearance.MouseDownBackColor = SystemColors.WindowFrame;
-            btnFecha.FlatAppearance.MouseOverBackColor = SystemColors.WindowFrame;
+            btnFecha.FlatAppearance.MouseDownBackColor = Color.FromArgb(70, 70, 70);
+            btnFecha.FlatAppearance.MouseOverBackColor = Color.FromArgb(70, 70, 70);
             btnFecha.FlatStyle = FlatStyle.Flat;
             btnFecha.Font = new Font("Verdana", 12F);
-            btnFecha.ForeColor = Color.White;
+            btnFecha.ForeColor = Color.Silver;
             btnFecha.Location = new Point(0, 0);
             btnFecha.Margin = new Padding(0);
             btnFecha.Name = "btnFecha";
@@ -207,12 +209,12 @@
             // btnAdministrar
             // 
             btnAdministrar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAdministrar.BackColor = Color.LightSeaGreen;
+            btnAdministrar.BackColor = Color.Teal;
             btnAdministrar.Dock = DockStyle.Fill;
             btnAdministrar.FlatAppearance.BorderColor = Color.White;
             btnAdministrar.FlatAppearance.BorderSize = 0;
-            btnAdministrar.FlatAppearance.MouseDownBackColor = Color.MediumTurquoise;
-            btnAdministrar.FlatAppearance.MouseOverBackColor = Color.MediumTurquoise;
+            btnAdministrar.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btnAdministrar.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btnAdministrar.FlatStyle = FlatStyle.Flat;
             btnAdministrar.Font = new Font("Verdana", 12F);
             btnAdministrar.ForeColor = Color.White;
@@ -228,12 +230,12 @@
             // btnFinalizar
             // 
             btnFinalizar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnFinalizar.BackColor = Color.Crimson;
+            btnFinalizar.BackColor = Color.Maroon;
             btnFinalizar.Dock = DockStyle.Fill;
             btnFinalizar.FlatAppearance.BorderColor = Color.White;
             btnFinalizar.FlatAppearance.BorderSize = 0;
-            btnFinalizar.FlatAppearance.MouseDownBackColor = Color.LightCoral;
-            btnFinalizar.FlatAppearance.MouseOverBackColor = Color.LightCoral;
+            btnFinalizar.FlatAppearance.MouseDownBackColor = Color.Crimson;
+            btnFinalizar.FlatAppearance.MouseOverBackColor = Color.Crimson;
             btnFinalizar.FlatStyle = FlatStyle.Flat;
             btnFinalizar.Font = new Font("Verdana", 12F);
             btnFinalizar.ForeColor = Color.White;
@@ -243,16 +245,18 @@
             btnFinalizar.Name = "btnFinalizar";
             btnFinalizar.Size = new Size(97, 51);
             btnFinalizar.TabIndex = 10;
-            btnFinalizar.UseVisualStyleBackColor = true;
+            btnFinalizar.UseVisualStyleBackColor = false;
             btnFinalizar.Click += btnFinalizar_Click;
             // 
             // panelTicket
             // 
+            panelTicket.AutoScroll = true;
+            panelTicket.BackColor = Color.Silver;
             panelTicket.Dock = DockStyle.Fill;
             panelTicket.Location = new Point(648, 21);
-            panelTicket.Margin = new Padding(0);
+            panelTicket.Margin = new Padding(0, 0, 0, 2);
             panelTicket.Name = "panelTicket";
-            panelTicket.Size = new Size(432, 648);
+            panelTicket.Size = new Size(432, 646);
             panelTicket.TabIndex = 14;
             // 
             // TerminalVentas

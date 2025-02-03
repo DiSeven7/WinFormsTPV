@@ -52,11 +52,9 @@
             // 
             // btnNombre
             // 
-            btnNombre.BackColor = Color.LightSeaGreen;
+            btnNombre.BackColor = Color.Teal;
             btnNombre.Dock = DockStyle.Fill;
             btnNombre.FlatAppearance.BorderSize = 0;
-            btnNombre.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
-            btnNombre.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btnNombre.FlatStyle = FlatStyle.Flat;
             btnNombre.Font = new Font("Verdana", 8F);
             btnNombre.ForeColor = Color.White;
@@ -92,8 +90,6 @@
             btnPrecio.BackColor = Color.DimGray;
             btnPrecio.Dock = DockStyle.Fill;
             btnPrecio.FlatAppearance.BorderSize = 0;
-            btnPrecio.FlatAppearance.MouseDownBackColor = Color.DimGray;
-            btnPrecio.FlatAppearance.MouseOverBackColor = Color.DimGray;
             btnPrecio.FlatStyle = FlatStyle.Flat;
             btnPrecio.Font = new Font("Verdana", 8F);
             btnPrecio.ForeColor = Color.White;

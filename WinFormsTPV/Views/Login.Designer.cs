@@ -40,11 +40,11 @@
             // 
             // btnAcceder
             // 
-            btnAcceder.BackColor = Color.LightSeaGreen;
+            btnAcceder.BackColor = Color.Teal;
             btnAcceder.FlatAppearance.BorderColor = Color.White;
             btnAcceder.FlatAppearance.BorderSize = 0;
-            btnAcceder.FlatAppearance.MouseDownBackColor = Color.MediumTurquoise;
-            btnAcceder.FlatAppearance.MouseOverBackColor = Color.MediumTurquoise;
+            btnAcceder.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btnAcceder.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btnAcceder.FlatStyle = FlatStyle.Flat;
             btnAcceder.Font = new Font("Verdana", 9F);
             btnAcceder.ForeColor = Color.White;
@@ -58,12 +58,12 @@
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.Crimson;
+            btnSalir.BackColor = Color.Maroon;
             btnSalir.DialogResult = DialogResult.Cancel;
             btnSalir.FlatAppearance.BorderColor = Color.White;
             btnSalir.FlatAppearance.BorderSize = 0;
-            btnSalir.FlatAppearance.MouseDownBackColor = Color.LightCoral;
-            btnSalir.FlatAppearance.MouseOverBackColor = Color.LightCoral;
+            btnSalir.FlatAppearance.MouseDownBackColor = Color.Crimson;
+            btnSalir.FlatAppearance.MouseOverBackColor = Color.Crimson;
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Verdana", 9F);
             btnSalir.ForeColor = Color.White;
@@ -76,12 +76,12 @@
             // 
             // btnCabecera
             // 
-            btnCabecera.BackColor = Color.LightSeaGreen;
+            btnCabecera.BackColor = Color.Teal;
             btnCabecera.Dock = DockStyle.Top;
             btnCabecera.FlatAppearance.BorderColor = Color.White;
             btnCabecera.FlatAppearance.BorderSize = 0;
-            btnCabecera.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
-            btnCabecera.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
+            btnCabecera.FlatAppearance.MouseDownBackColor = Color.Teal;
+            btnCabecera.FlatAppearance.MouseOverBackColor = Color.Teal;
             btnCabecera.FlatStyle = FlatStyle.Flat;
             btnCabecera.Font = new Font("Verdana", 7.5F);
             btnCabecera.ForeColor = Color.White;
@@ -115,7 +115,7 @@
             // 
             // tbUsuario
             // 
-            tbUsuario.BackColor = SystemColors.Control;
+            tbUsuario.BackColor = Color.LightGray;
             tbUsuario.BorderStyle = BorderStyle.FixedSingle;
             tbUsuario.CharacterCasing = CharacterCasing.Lower;
             tbUsuario.Location = new Point(126, 50);
@@ -127,7 +127,7 @@
             // 
             // tbContraseña
             // 
-            tbContraseña.BackColor = SystemColors.Control;
+            tbContraseña.BackColor = Color.LightGray;
             tbContraseña.BorderStyle = BorderStyle.FixedSingle;
             tbContraseña.Location = new Point(126, 100);
             tbContraseña.Name = "tbContraseña";
@@ -141,7 +141,7 @@
             // 
             lblErrorLogin.AutoSize = true;
             lblErrorLogin.Font = new Font("Verdana", 8F);
-            lblErrorLogin.ForeColor = Color.Crimson;
+            lblErrorLogin.ForeColor = Color.Maroon;
             lblErrorLogin.Location = new Point(14, 168);
             lblErrorLogin.Name = "lblErrorLogin";
             lblErrorLogin.Size = new Size(241, 17);
@@ -153,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLight;
+            BackColor = Color.Silver;
             ClientSize = new Size(500, 225);
             Controls.Add(lblErrorLogin);
             Controls.Add(tbContraseña);

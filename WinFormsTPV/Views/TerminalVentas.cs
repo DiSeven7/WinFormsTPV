@@ -74,11 +74,12 @@ namespace WinFormsTPV.Views
             col++;
             foreach (var producto in productos)
             {
-                tlpProductos.Controls.Add(
-                    new BotonProducto()
-                    {
-                        Producto = producto
-                    }, col, row);
+                var item = new BotonProducto()
+                {
+                    Producto = producto
+                };
+                item.Click += Producto_Click;
+                tlpProductos.Controls.Add(item, col, row);
                 col++;
                 if (col == 8)
                 {
@@ -86,6 +87,36 @@ namespace WinFormsTPV.Views
                     col = 0;
                 }
             }
+        }
+
+        private void Producto_Click(object? sender, EventArgs e)
+        {
+            var productoAñadir = (sender as BotonProducto).Producto;
+            if (!panelTicket.Controls.Cast<BotonTicket>().Any(x => x.Producto.Equals(productoAñadir)))
+            {
+                var btnTicket = new BotonTicket()
+                {
+                    Dock = DockStyle.Top,
+                    Height = 100,
+                    Producto = productoAñadir
+                };
+                btnTicket.Click += BtnTicket_Click;
+                panelTicket.Controls.Add(btnTicket);
+                btnTotal.Text = $"Total: {panelTicket.Controls.Cast<BotonTicket>().Select(x => x.Subtotal).Sum()}€";
+            }
+            else
+            {
+                if (panelTicket.Controls.Count > 0)
+                {
+                    var objetivo = panelTicket.Controls.Cast<BotonTicket>().First(x => x.Producto.Equals(productoAñadir));
+                    objetivo.Cantidad = objetivo.Cantidad++;
+                }
+            }
+        }
+
+        private void BtnTicket_Click(object? sender, EventArgs e)
+        {
+            btnTotal.Text = $"Total: {panelTicket.Controls.Cast<BotonTicket>().Select(x => x.Subtotal).Sum()}€";
         }
 
         private void BotonAtras_Click(object? sender, EventArgs e)

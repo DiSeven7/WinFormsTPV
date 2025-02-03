@@ -7,6 +7,9 @@
     <Compile Update="UserControls\BotonProducto.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\BotonTicket.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>

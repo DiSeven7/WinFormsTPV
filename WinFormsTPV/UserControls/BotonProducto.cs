@@ -26,8 +26,6 @@ namespace WinFormsTPV.UserControls
                 if (_Producto.Stock < 1 || !_Producto.Activo)
                 {
                     btnPrecio.BackColor = Color.DarkOrange;
-                    btnPrecio.FlatAppearance.MouseOverBackColor = Color.DarkOrange;
-                    btnPrecio.FlatAppearance.MouseDownBackColor = Color.DarkOrange;
                     btnPrecio.Enabled = false;
                     btnPrecio.Text = "Agotado";
                 }
@@ -56,14 +54,28 @@ namespace WinFormsTPV.UserControls
 
         private void Producto_MouseEnter(object sender, EventArgs e)
         {
-            btnNombre.BackColor = Color.MediumTurquoise;
-            btnPrecio.BackColor = Color.Silver;
+            btnNombre.BackColor = Color.LightSeaGreen;
+            if (_Producto.Stock < 1 || !_Producto.Activo)
+            {
+                btnPrecio.FlatAppearance.MouseOverBackColor = Color.Orange;
+            }
+            else
+            {
+                btnPrecio.BackColor = Color.Silver;
+            }
         }
 
         private void Producto_MouseLeave(object sender, EventArgs e)
         {
-            btnNombre.BackColor = Color.LightSeaGreen;
-            btnPrecio.BackColor = Color.DimGray;
+            btnNombre.BackColor = Color.Teal;
+            if (_Producto.Stock < 1 || !_Producto.Activo)
+            {
+                btnPrecio.FlatAppearance.MouseOverBackColor = Color.DarkOrange;
+            }
+            else
+            {
+                btnPrecio.BackColor = Color.DimGray;
+            }
         }
     }
 }

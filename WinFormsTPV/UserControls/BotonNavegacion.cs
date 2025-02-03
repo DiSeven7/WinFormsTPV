@@ -48,9 +48,9 @@ namespace WinFormsTPV.UserControls
                 }
                 else
                 {
-                    btnTexto.BackColor = Color.LightSeaGreen;
-                    btnTexto.FlatAppearance.MouseOverBackColor = Color.MediumTurquoise;
-                    btnTexto.FlatAppearance.MouseDownBackColor = Color.MediumTurquoise;
+                    btnTexto.BackColor = Color.Teal;
+                    btnTexto.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
+                    btnTexto.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
                 }
             }
         }
@@ -62,12 +62,12 @@ namespace WinFormsTPV.UserControls
 
         private void pbImagen_MouseEnter(object sender, EventArgs e)
         {
-            btnTexto.BackColor = !EsBotonAtras ? Color.MediumTurquoise : Color.Silver;
+            btnTexto.BackColor = !EsBotonAtras ? Color.LightSeaGreen : Color.Silver;
         }
 
         private void pbImagen_MouseLeave(object sender, EventArgs e)
         {
-            btnTexto.BackColor = !EsBotonAtras ? Color.LightSeaGreen : Color.DimGray;
+            btnTexto.BackColor = !EsBotonAtras ? Color.Teal : Color.DimGray;
         }
 
         private void Boton_Click(object? sender, EventArgs e)

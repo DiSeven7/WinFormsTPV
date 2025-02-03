@@ -53,11 +53,11 @@
             // 
             // btnTexto
             // 
-            btnTexto.BackColor = Color.LightSeaGreen;
+            btnTexto.BackColor = Color.Teal;
             btnTexto.Dock = DockStyle.Fill;
             btnTexto.FlatAppearance.BorderSize = 0;
-            btnTexto.FlatAppearance.MouseDownBackColor = Color.MediumTurquoise;
-            btnTexto.FlatAppearance.MouseOverBackColor = Color.MediumTurquoise;
+            btnTexto.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
+            btnTexto.FlatAppearance.MouseOverBackColor = Color.LightSeaGreen;
             btnTexto.FlatStyle = FlatStyle.Flat;
             btnTexto.Font = new Font("Verdana", 10F);
             btnTexto.ForeColor = Color.White;
