@@ -54,6 +54,7 @@
             // btnTexto
             // 
             btnTexto.BackColor = Color.Teal;
+            btnTexto.Cursor = Cursors.Hand;
             btnTexto.Dock = DockStyle.Fill;
             btnTexto.FlatAppearance.BorderSize = 0;
             btnTexto.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;
@@ -72,6 +73,7 @@
             // 
             // pbImagen
             // 
+            pbImagen.Cursor = Cursors.Hand;
             pbImagen.Dock = DockStyle.Fill;
             pbImagen.Location = new Point(0, 0);
             pbImagen.Margin = new Padding(0);

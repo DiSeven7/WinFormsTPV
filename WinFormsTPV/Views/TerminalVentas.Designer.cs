@@ -147,6 +147,7 @@
             btnFinalizarTicket.TabIndex = 17;
             btnFinalizarTicket.Text = "Finalizar";
             btnFinalizarTicket.UseVisualStyleBackColor = false;
+            btnFinalizarTicket.Click += btnFinalizarTicket_Click;
             // 
             // btnTotal
             // 

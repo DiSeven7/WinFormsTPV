@@ -14,6 +14,9 @@
     <None Remove="Resources\Cervezas.png" />
     <None Remove="Resources\Comidas.png" />
     <None Remove="Resources\Desayunos.png" />
+    <None Remove="Resources\Estrella1906.png" />
+    <None Remove="Resources\FuzeTeaMaracuya.png" />
+    <None Remove="Resources\KasLimon.png" />
     <None Remove="Resources\Menús.png" />
     <None Remove="Resources\Refrescos.png" />
     <None Remove="Resources\TesAgua.png" />
@@ -21,6 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Estrella1906.png" />
+    <Resource Include="Resources\FuzeTeaMaracuya.png" />
+    <Resource Include="Resources\KasLimon.png" />
     <Resource Include="Resources\Menús.png" />
   </ItemGroup>
 

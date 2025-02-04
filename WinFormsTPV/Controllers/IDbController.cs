@@ -31,6 +31,8 @@ namespace WinFormsTPV.Controllers
 
         bool ActualizarProducto(Producto producto);
 
+        bool ActualizarStock(Producto producto);
+
         void InsertarTicket(Ticket ticket);
 
         List<Ticket> ObtenerTickets();

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using WinFormsTPV.Models;
+﻿using WinFormsTPV.Models;
 
 namespace WinFormsTPV.UserControls
 {
@@ -42,8 +32,8 @@ namespace WinFormsTPV.UserControls
                 {
                     btnTexto.Text = "Atrás";
                     btnTexto.BackColor = Color.DimGray;
-                    btnTexto.FlatAppearance.MouseOverBackColor = Color.Silver;
-                    btnTexto.FlatAppearance.MouseDownBackColor = Color.Silver;
+                    btnTexto.FlatAppearance.MouseOverBackColor = Color.Gray;
+                    btnTexto.FlatAppearance.MouseDownBackColor = Color.Gray;
                     pbImagen.Image = Image.FromFile(@"..\..\..\Resources\Atras.png");                    
                 }
                 else
@@ -62,7 +52,7 @@ namespace WinFormsTPV.UserControls
 
         private void pbImagen_MouseEnter(object sender, EventArgs e)
         {
-            btnTexto.BackColor = !EsBotonAtras ? Color.LightSeaGreen : Color.Silver;
+            btnTexto.BackColor = !EsBotonAtras ? Color.LightSeaGreen : Color.Gray;
         }
 
         private void pbImagen_MouseLeave(object sender, EventArgs e)

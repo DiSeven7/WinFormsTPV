@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Data;
 using WinFormsTPV.Controllers;
 using WinFormsTPV.Models;
 using WinFormsTPV.UserControls;
@@ -92,31 +84,37 @@ namespace WinFormsTPV.Views
         private void Producto_Click(object? sender, EventArgs e)
         {
             var productoAñadir = (sender as BotonProducto).Producto;
-            if (!panelTicket.Controls.Cast<BotonTicket>().Any(x => x.Producto.Equals(productoAñadir)))
+            if (!panelTicket.Controls.Cast<BotonTicket>().Any(x => x.Producto.Nombre.Equals(productoAñadir.Nombre)))
             {
-                var btnTicket = new BotonTicket()
+                if (productoAñadir.Stock != 0)
                 {
-                    Dock = DockStyle.Top,
-                    Height = 100,
-                    Producto = productoAñadir
-                };
-                btnTicket.Click += BtnTicket_Click;
-                panelTicket.Controls.Add(btnTicket);
-                btnTotal.Text = $"Total: {panelTicket.Controls.Cast<BotonTicket>().Select(x => x.Subtotal).Sum()}€";
+                    var btnTicket = new BotonTicket()
+                    {
+                        Dock = DockStyle.Top,
+                        Height = 100,
+                        Producto = productoAñadir
+                    };
+                    btnTicket.Click += BtnTicket_Click;
+                    panelTicket.Controls.Add(btnTicket);
+                    btnTotal.Text = $"Total: {Math.Round(panelTicket.Controls.Cast<BotonTicket>().Select(x => x.Subtotal).Sum(), 2)}€";
+                }
             }
             else
             {
                 if (panelTicket.Controls.Count > 0)
                 {
-                    var objetivo = panelTicket.Controls.Cast<BotonTicket>().First(x => x.Producto.Equals(productoAñadir));
-                    objetivo.Cantidad = objetivo.Cantidad++;
+                    var objetivo = panelTicket.Controls.Cast<BotonTicket>().First(x => x.Producto.Nombre.Equals(productoAñadir.Nombre));
+                    if (objetivo.Producto.Stock != 0)
+                    {
+                        objetivo.Cantidad = objetivo.Cantidad++;
+                    }
                 }
             }
         }
 
         private void BtnTicket_Click(object? sender, EventArgs e)
         {
-            btnTotal.Text = $"Total: {panelTicket.Controls.Cast<BotonTicket>().Select(x => x.Subtotal).Sum()}€";
+            btnTotal.Text = $"Total: {Math.Round(panelTicket.Controls.Cast<BotonTicket>().Select(x => x.Subtotal).Sum(), 2)}€";
         }
 
         private void BotonAtras_Click(object? sender, EventArgs e)
@@ -151,6 +149,25 @@ namespace WinFormsTPV.Views
                 }
             }
             tlpProductos.Invalidate();
+        }
+
+        private void btnFinalizarTicket_Click(object sender, EventArgs e)
+        {
+            var fechaVenta = DateTime.Now;
+            dbController.InsertarTicket(new Ticket(fechaVenta));
+            var ticket = dbController.ObtenerTicket(fechaVenta);
+            foreach (var item in panelTicket.Controls.Cast<BotonTicket>())
+            {
+                var producto = item.Producto;
+                dbController.InsertarVenta(new Venta(ticket.Id, producto.Id, Usuario.Id, item.Cantidad, item.Subtotal));
+                if (producto.Stock != -1 && producto.Stock > 0)
+                {
+                    producto.Stock = producto.Stock - item.Cantidad;
+                }
+                dbController.ActualizarStock(producto);   
+            }
+            panelTicket.Controls.Clear();
+            btnTotal.Text = $"Total: 0.00€";
         }
     }
 }

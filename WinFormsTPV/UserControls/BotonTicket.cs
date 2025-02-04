@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using WinFormsTPV.Models;
+﻿using WinFormsTPV.Models;
 
 namespace WinFormsTPV.UserControls
 {
@@ -24,7 +15,7 @@ namespace WinFormsTPV.UserControls
             {
                 _Producto = value;
                 btnNombre.Text = _Producto.Nombre;
-                btnSubtotal.Text = $"{_Producto.Precio}€";
+                btnSubtotal.Text = $"{Math.Round(_Producto.Precio, 2)}€";
                 Subtotal = _Producto.Precio;
             }
         }
@@ -50,12 +41,12 @@ namespace WinFormsTPV.UserControls
         private void btnMas_Click(object sender, EventArgs e)
         {
             int cantidad = Convert.ToInt32(btnCantidad.Text);
-            if (cantidad < _Producto.Stock)
+            if (cantidad < _Producto.Stock || _Producto.Stock == -1)
             {
                 cantidad++;
                 btnCantidad.Text = Convert.ToString(cantidad);
                 Subtotal = Convert.ToDouble(cantidad * _Producto.Precio);
-                btnSubtotal.Text = $"{Subtotal}€";
+                btnSubtotal.Text = $"{Math.Round(Subtotal, 2)}€";
             }
             OnClick(e);
         }
@@ -68,7 +59,7 @@ namespace WinFormsTPV.UserControls
                 cantidad--;
                 btnCantidad.Text = Convert.ToString(cantidad);
                 Subtotal = Convert.ToDouble(cantidad * _Producto.Precio);
-                btnSubtotal.Text = $"{Subtotal}€";
+                btnSubtotal.Text = $"{Math.Round(Subtotal, 2)}€";
             }
             OnClick(e);
         }

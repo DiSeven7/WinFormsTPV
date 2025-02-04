@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing.Imaging;
+﻿using System.Drawing.Imaging;
 using System.Text;
 using Microsoft.Data.Sqlite;
 using WinFormsTPV.Models;
@@ -49,7 +48,10 @@ namespace WinFormsTPV.Controllers
                 InsertarCategoria(new Categoria("Menús", @"..\..\..\Resources\Menús.png", true));
                 InsertarVenta(new Venta(1, 2, 1, 5, 22.22));
                 InsertarTicket(new Ticket(DateTime.Now));
-                InsertarProducto(new Producto("Coca-Cola", 1.25, 400, @"..\..\..\Resources\cocacola.png", 3, true));
+                InsertarProducto(new Producto("Coca-Cola", 2.15, 400, @"..\..\..\Resources\Cocacola.png", 3, true));
+                InsertarProducto(new Producto("Kas Limón", 1.90, 0, @"..\..\..\Resources\KasLimon.png", 3, true));
+                InsertarProducto(new Producto("Fuze Tea Maracuyá", 2.00, -1, @"..\..\..\Resources\FuzeTeaMaracuya.png", 3, true));
+                InsertarProducto(new Producto("1906", 2.40, 20, @"..\..\..\Resources\Estrella1906.png", 1, true));
             }
             var co = ObtenerProductos();
         }
@@ -299,6 +301,24 @@ namespace WinFormsTPV.Controllers
             }
         }
 
+        public bool ActualizarStock(Producto producto)
+        {
+            using (SqliteConnection db =
+           new SqliteConnection($"Filename={path}"))
+            {
+                db.Open();
+
+                var insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "UPDATE Productos SET Stock=@stock WHERE Id=@id;";
+                insertCommand.Parameters.AddWithValue("@stock", producto.Stock);
+                insertCommand.Parameters.AddWithValue("@id", producto.Id);
+                var resultado = insertCommand.ExecuteNonQuery();
+                return resultado > 0;
+            }
+        }
+
         #endregion
 
         #region Operaciones tickets
@@ -417,9 +437,10 @@ namespace WinFormsTPV.Controllers
                 var insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Ventas (IdTicket,IdProducto,Cantidad,Subtotal) VALUES (@idTicket,@idProducto,@cantidad,@subtotal);";
+                insertCommand.CommandText = "INSERT INTO Ventas (IdTicket,IdProducto,IdUsuario,Cantidad,Subtotal) VALUES (@idTicket,@idProducto,@idUsuario,@cantidad,@subtotal);";
                 insertCommand.Parameters.AddWithValue("@idTicket", venta.IdTicket);
                 insertCommand.Parameters.AddWithValue("@idProducto", venta.IdProducto);
+                insertCommand.Parameters.AddWithValue("@idUsuario", venta.IdUsuario);
                 insertCommand.Parameters.AddWithValue("@cantidad", venta.Cantidad);
                 insertCommand.Parameters.AddWithValue("@subtotal", venta.Subtotal);
                 insertCommand.ExecuteReader();

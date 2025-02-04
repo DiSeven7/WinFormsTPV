@@ -120,6 +120,7 @@
             // btnEliminar
             // 
             btnEliminar.BackColor = Color.Maroon;
+            btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.Dock = DockStyle.Fill;
             btnEliminar.FlatAppearance.BorderSize = 0;
             btnEliminar.FlatAppearance.MouseDownBackColor = Color.Crimson;
@@ -139,6 +140,7 @@
             // btnMas
             // 
             btnMas.BackColor = Color.DimGray;
+            btnMas.Cursor = Cursors.Hand;
             btnMas.Dock = DockStyle.Fill;
             btnMas.FlatAppearance.BorderSize = 0;
             btnMas.FlatAppearance.MouseDownBackColor = Color.Gray;
@@ -158,6 +160,7 @@
             // btnMenos
             // 
             btnMenos.BackColor = Color.Teal;
+            btnMenos.Cursor = Cursors.Hand;
             btnMenos.Dock = DockStyle.Fill;
             btnMenos.FlatAppearance.BorderSize = 0;
             btnMenos.FlatAppearance.MouseDownBackColor = Color.LightSeaGreen;

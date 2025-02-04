@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using WinFormsTPV.Models;
+﻿using WinFormsTPV.Models;
 
 namespace WinFormsTPV.UserControls
 {
@@ -21,17 +12,18 @@ namespace WinFormsTPV.UserControls
             {
                 _Producto = value;
 
-                btnNombre.Text = _Producto.Nombre;
+                btnNombrePrecio.Text = _Producto.Nombre;
 
-                if (_Producto.Stock < 1 || !_Producto.Activo)
+                if ((_Producto.Stock < 1 && _Producto.Stock != -1) || !_Producto.Activo)
                 {
-                    btnPrecio.BackColor = Color.DarkOrange;
-                    btnPrecio.Enabled = false;
-                    btnPrecio.Text = "Agotado";
+                    btnNombrePrecio.BackColor = Color.Maroon;
+                    btnNombrePrecio.FlatAppearance.MouseDownBackColor = Color.Crimson;
+                    btnNombrePrecio.FlatAppearance.MouseOverBackColor = Color.Crimson;
+                    btnNombrePrecio.Text = $"{_Producto.Nombre}\r\nAgotado";
                 }
                 else
                 {
-                    btnPrecio.Text = _Producto.Precio + "€";
+                    btnNombrePrecio.Text = $"{_Producto.Nombre}\r\n{_Producto.Precio}€";
                 }
 
                 byte[] imgBytes = Convert.FromBase64String(_Producto.Imagen);
@@ -54,27 +46,26 @@ namespace WinFormsTPV.UserControls
 
         private void Producto_MouseEnter(object sender, EventArgs e)
         {
-            btnNombre.BackColor = Color.LightSeaGreen;
-            if (_Producto.Stock < 1 || !_Producto.Activo)
+            btnNombrePrecio.BackColor = Color.LightSeaGreen;
+            if ((_Producto.Stock < 1 && Producto.Stock != -1) || !_Producto.Activo)
             {
-                btnPrecio.FlatAppearance.MouseOverBackColor = Color.Orange;
+                btnNombrePrecio.BackColor = Color.Crimson;
             }
             else
             {
-                btnPrecio.BackColor = Color.Silver;
+                btnNombrePrecio.BackColor = Color.LightSeaGreen;
             }
         }
 
         private void Producto_MouseLeave(object sender, EventArgs e)
         {
-            btnNombre.BackColor = Color.Teal;
-            if (_Producto.Stock < 1 || !_Producto.Activo)
+            if ((_Producto.Stock < 1 && Producto.Stock != -1) || !_Producto.Activo)
             {
-                btnPrecio.FlatAppearance.MouseOverBackColor = Color.DarkOrange;
+                btnNombrePrecio.BackColor = Color.Maroon;
             }
             else
             {
-                btnPrecio.BackColor = Color.DimGray;
+                btnNombrePrecio.BackColor = Color.Teal;
             }
         }
     }
