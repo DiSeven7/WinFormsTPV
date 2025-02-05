@@ -227,6 +227,7 @@
             btnAdministrar.TabIndex = 14;
             btnAdministrar.UseVisualStyleBackColor = false;
             btnAdministrar.Visible = false;
+            btnAdministrar.Click += btnAdministrar_Click;
             // 
             // btnFinalizar
             // 

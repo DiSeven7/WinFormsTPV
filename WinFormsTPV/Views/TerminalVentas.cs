@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Drawing.Printing;
 using WinFormsTPV.Controllers;
 using WinFormsTPV.Models;
 using WinFormsTPV.UserControls;
@@ -164,10 +165,82 @@ namespace WinFormsTPV.Views
                 {
                     producto.Stock = producto.Stock - item.Cantidad;
                 }
-                dbController.ActualizarStock(producto);   
+                dbController.ActualizarStock(producto);
             }
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += ImprimirTicket;
+            PaperSize ps = new PaperSize("", 420, offsetX);
+            pd.PrintController = new StandardPrintController();
+            pd.DefaultPageSettings.Margins.Left = 0;
+            pd.DefaultPageSettings.Margins.Right = 0;
+            pd.DefaultPageSettings.Margins.Top = 0;
+            pd.DefaultPageSettings.Margins.Bottom = 0;
+            pd.DefaultPageSettings.PaperSize = ps;
+            pd.Print();
+
             panelTicket.Controls.Clear();
             btnTotal.Text = $"Total: 0.00€";
+        }
+
+        int offsetX = 5;
+        private void ImprimirTicket(object sender, PrintPageEventArgs e)
+        {
+            double total = 0;
+
+            Font fontTitulo = new Font("Verdana", 15, FontStyle.Bold);
+            Font fontNormal = new Font("Verdana", 12);
+            Font fontBold = new Font("Verdana", 12, FontStyle.Bold);
+            SolidBrush b = new SolidBrush(Color.Black);
+
+            Graphics g = e.Graphics;
+            var tamañoTitulo = g.MeasureString("WinFormsTPV", fontTitulo).Width;
+            g.DrawString("WinFormsTPV", fontTitulo, b, (420 - tamañoTitulo) / 2, 5);
+            offsetX += 25;
+            var tamañoFecha = g.MeasureString(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), fontNormal).Width;
+            g.DrawString(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), fontNormal, b, (420 - tamañoFecha) / 2, offsetX);
+            offsetX += 25;
+            var tamañoEspaciador = g.MeasureString("--------------------------------------------------------", fontNormal).Width;
+            g.DrawString("--------------------------------------------------------", fontNormal, b, 1, offsetX);
+            offsetX += 20;
+            var tamañoProducto = g.MeasureString("Producto", fontNormal).Width;
+            g.DrawString("Producto", fontBold, b, ((420 / 4 * 2) - tamañoProducto) / 2, offsetX);
+            var tamañoCantidad = g.MeasureString("Cantidad", fontNormal).Width;
+            g.DrawString("Cantidad", fontBold, b, (420 / 4 * 3) - tamañoCantidad, offsetX);
+            var tamañoSubtotal = g.MeasureString("Subtotal", fontNormal).Width;
+            g.DrawString("Subtotal", fontBold, b, 420 - tamañoSubtotal, offsetX);
+            offsetX += 25;
+
+            foreach (var item in panelTicket.Controls.Cast<BotonTicket>())
+            {
+                var producto = item.Producto;
+                var tamañoItemNombre = g.MeasureString(item.Producto.Nombre, fontNormal).Width;
+                g.DrawString(item.Producto.Nombre, fontNormal, b, ((420 / 4 * 2) - tamañoItemNombre) / 2, offsetX);
+                var tamañoItemCantidad = g.MeasureString(item.Cantidad.ToString(), fontNormal).Width;
+                g.DrawString(item.Cantidad.ToString(), fontNormal, b, (420 / 4 * 3) - (tamañoCantidad / 2) - (tamañoItemCantidad / 2), offsetX);
+                var tamañoItemSubtotal = g.MeasureString($"{Math.Round(item.Cantidad * item.Producto.Precio, 2)}€", fontNormal).Width;
+                g.DrawString($"{Math.Round(item.Cantidad * item.Producto.Precio, 2)}€", fontNormal, b, 420 - (tamañoSubtotal / 2) - (tamañoItemSubtotal / 2), offsetX);
+                total += item.Cantidad * item.Producto.Precio;
+                offsetX += 25;
+            }
+            g.DrawString("--------------------------------------------------------", fontNormal, b, 1, offsetX);
+            offsetX += 25;
+            var tamañoTotal = g.MeasureString($"TOTAL:{Math.Round(total, 2)}€", fontBold).Width;
+            g.DrawString($"TOTAL:{Math.Round(total, 2)}€", fontBold, b, (420 - tamañoTotal) / 2, offsetX);
+            offsetX += 25;
+            var tamañoIva = g.MeasureString("IVA Incluido", fontNormal).Width;
+            g.DrawString("IVA Incluido", fontNormal, b, (420 - tamañoIva) / 2, offsetX);
+            offsetX += 25;
+            var tamañoGracias = g.MeasureString("Gracias por su visita", fontNormal).Width;
+            g.DrawString("Gracias por su visita", fontNormal, b, (420 - tamañoGracias) / 2, offsetX);
+            offsetX += 25;
+            g.Dispose();
+        }
+
+        private void btnAdministrar_Click(object sender, EventArgs e)
+        {
+            Administracion admin = new Administracion();
+            admin.ShowDialog();
         }
     }
 }
