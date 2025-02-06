@@ -78,7 +78,7 @@
             btnCantidad.Name = "btnCantidad";
             btnCantidad.Size = new Size(43, 46);
             btnCantidad.TabIndex = 14;
-            btnCantidad.Text = "1";
+            btnCantidad.Text = "0";
             btnCantidad.UseVisualStyleBackColor = false;
             // 
             // btnSubtotal

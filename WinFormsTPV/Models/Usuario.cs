@@ -10,8 +10,6 @@ namespace WinFormsTPV.Models
 
         public string Contraseña { get; set; }
 
-        public bool Verificado { get; set; }
-
         public bool EsAdmin { get; set; }
 
         public bool Activo { get; set; }
@@ -21,12 +19,11 @@ namespace WinFormsTPV.Models
 
         }
 
-        public Usuario(string alias, string contraseña, bool verificado, bool esAdmin, bool activo, int id = -1)
+        public Usuario(string alias, string contraseña, bool esAdmin, bool activo, int id = -1)
         {
             if (id != -1) { Id = id; };
             Alias = alias;
             Contraseña = Convert.ToBase64String(Encoding.UTF8.GetBytes(contraseña));
-            Verificado = verificado;
             EsAdmin = esAdmin;
             Activo = activo;
         }

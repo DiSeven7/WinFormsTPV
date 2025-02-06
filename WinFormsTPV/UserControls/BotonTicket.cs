@@ -57,10 +57,19 @@ namespace WinFormsTPV.UserControls
             if (cantidad > 1)
             {
                 cantidad--;
-                btnCantidad.Text = Convert.ToString(cantidad);
-                Subtotal = Convert.ToDouble(cantidad * _Producto.Precio);
-                btnSubtotal.Text = $"{Math.Round(Subtotal, 2)}€";
             }
+            else if (cantidad == 1)
+            {
+                cantidad -= 2;
+            }
+            else
+            {
+                cantidad--;
+            }
+            btnCantidad.Text = Convert.ToString(cantidad);
+            Subtotal = Convert.ToDouble(cantidad * _Producto.Precio);
+            btnSubtotal.Text = $"{Math.Round(Subtotal, 2)}€";
+
             OnClick(e);
         }
 

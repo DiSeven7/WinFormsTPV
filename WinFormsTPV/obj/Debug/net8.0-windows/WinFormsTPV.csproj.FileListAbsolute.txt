@@ -48,3 +48,7 @@ C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0
 C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.genruntimeconfig.cache
 C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\ref\WinFormsTPV.dll
 C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.Views.Administracion.resources
+C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\bin\Debug\net8.0-windows\WinFormsTPV.dll.config
+C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.UserControls.FormularioProductos.resources
+C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.UserControls.FormularioUsuarios.resources
+C:\Users\DiSeven\Desktop\Proyectos .NET\WinFormsTPV\WinFormsTPV\obj\Debug\net8.0-windows\WinFormsTPV.UserControls.FormularioCategorias.resources

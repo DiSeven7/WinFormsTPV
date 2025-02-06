@@ -10,6 +10,12 @@
     <Compile Update="UserControls\BotonTicket.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControls\FormularioCategorias.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControls\FormularioProductos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Views\Administracion.cs">
       <SubType>Form</SubType>
     </Compile>

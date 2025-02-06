@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\controllers\\inavigationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:controllers\\inavigationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\controllers\\navigationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:controllers\\navigationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\views\\terminalventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:views\\terminalventas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\views\\administracion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:views\\administracion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\views\\administracion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:views\\administracion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\controllers\\dbcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:controllers\\dbcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|c:\\users\\diseven\\desktop\\proyectos .net\\winformstpv\\winformstpv\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41BF1B22-A469-4DB4-921A-30574FCEAAB9}|WinFormsTPV.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,76 +34,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "INavigationController.cs",
-              "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Controllers\\INavigationController.cs",
-              "RelativeDocumentMoniker": "Controllers\\INavigationController.cs",
-              "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Controllers\\INavigationController.cs",
-              "RelativeToolTip": "Controllers\\INavigationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBkAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T15:07:01.922Z",
+              "WhenOpened": "2025-02-06T14:26:37.247Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "NavigationController.cs",
-              "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Controllers\\NavigationController.cs",
-              "RelativeDocumentMoniker": "Controllers\\NavigationController.cs",
-              "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Controllers\\NavigationController.cs",
-              "RelativeToolTip": "Controllers\\NavigationController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T15:06:56.301Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Administracion.cs",
-              "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Views\\Administracion.cs",
-              "RelativeDocumentMoniker": "Views\\Administracion.cs",
-              "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Views\\Administracion.cs",
-              "RelativeToolTip": "Views\\Administracion.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAvwBUAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T15:04:19.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Administracion.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Views\\Administracion.cs",
-              "RelativeDocumentMoniker": "Views\\Administracion.cs",
-              "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Views\\Administracion.cs [Dise\u00F1o]",
-              "RelativeToolTip": "Views\\Administracion.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T14:24:21.819Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "DbController.cs",
               "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Controllers\\DbController.cs",
               "RelativeDocumentMoniker": "Controllers\\DbController.cs",
               "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Controllers\\DbController.cs",
               "RelativeToolTip": "Controllers\\DbController.cs",
-              "ViewState": "AgIAAKkBAAAAAAAAAAArwLoBAABTAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAUwCYAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-04T14:35:47.48Z"
+              "WhenOpened": "2025-02-06T14:25:07.574Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "TerminalVentas.cs",
               "DocumentMoniker": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Views\\TerminalVentas.cs",
               "RelativeDocumentMoniker": "Views\\TerminalVentas.cs",
               "ToolTip": "C:\\Users\\DiSeven\\Desktop\\Proyectos .NET\\WinFormsTPV\\WinFormsTPV\\Views\\TerminalVentas.cs",
               "RelativeToolTip": "Views\\TerminalVentas.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAAArwMsAAABlAAAAAAAAAA==",
+              "ViewState": "AgIAAKoAAAAAAAAAAAAvwLcAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-04T13:55:32.519Z",
               "EditorCaption": ""
